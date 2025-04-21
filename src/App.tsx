@@ -27,11 +27,7 @@ export default function App() {
     setData(null);
 
     setTimeout(() => {
-      fetch(`https://api.github.com/users/${username}`, {
-        headers: {
-          Authorization: `token ${import.meta.env.VITE_API_TOKEN}`,
-        },
-      })
+      fetch(`https://api.github.com/users/${username}`)
         .then((response) => {
           if (!response.ok) {
             setError("Usuário não encontrado");
