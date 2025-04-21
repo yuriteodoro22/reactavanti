@@ -17,35 +17,36 @@ export default function App() {
   const [showInput, setShowInput] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => setShowHeader(true), 400); // aparece logo
-    setTimeout(() => setShowInput(true), 1000); // depois do header
+    setTimeout(() => setShowHeader(true), 400);
+    setTimeout(() => setShowInput(true), 1000);
   }, []);
+
+  async function getApi(username: string): Promise<UserProps | null> {
+    const response = await fetch(`https://api.github.com/users/${username}`);
+
+    if (!response.ok) {
+      return null;
+    }
+
+    const userdata: UserProps = await response.json();
+    return userdata;
+  }
 
   async function getData(username: string) {
     setIsLoading(true);
     setError("");
     setData(null);
 
-    setTimeout(() => {
-      fetch(`https://api.github.com/users/${username}`)
-        .then((response) => {
-          if (!response.ok) {
-            setError("Usuário não encontrado");
-            SetInput("");
-            setIsLoading(false); 
-            return null; 
-          }
-          return response.json();
-        })
-        .then((data: UserProps | null) => {
-          if (data) {
-            setData(data);
-            console.log(data);
-          }
-          SetInput("");
-          setIsLoading(false); 
-        });
-    }, 4000);
+    const userdata = await getApi(username);
+
+    if (userdata) {
+      setData(userdata);
+    } else {
+      setError("Usuário não encontrado");
+    }
+
+    SetInput("");
+    setIsLoading(false);
   }
 
   return (

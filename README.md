@@ -1,4 +1,4 @@
-# 🔍 Teste Avanti
+# 🔍 GitHub Profile Finder
 
 Uma aplicação desenvolvida em **React + TypeScript** que permite buscar usuários do GitHub e exibir suas informações públicas, como nome, bio e foto de perfil.
 
