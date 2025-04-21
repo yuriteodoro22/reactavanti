@@ -34,3 +34,14 @@ npm install
 
 # Inicie o projeto
 npm run dev
+   ```
+
+---
+
+## 👤 Autor
+
+Desenvolvido por **Yuri Teodoro Ramos** – Front-end Developer.
+
+[LinkedIn](https://www.linkedin.com/in/seu-usuario/) | [GitHub](https://github.com/seu-usuario)
+
+---
